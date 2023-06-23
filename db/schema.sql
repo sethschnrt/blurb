@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS blurb_db;
+CREATE DATABASE blurb_db;
