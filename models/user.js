@@ -8,9 +8,18 @@ class User extends Model {}
 
 // User fields and rules
 User.init({
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    userName: DataTypes.STRING,
+    firstName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    lastName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    userName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     birthDate: DataTypes.DATE,
 },
 {

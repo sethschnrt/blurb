@@ -8,8 +8,14 @@ class Post extends Model {}
 
 // Post fields and rules
 Post.init({
-    content: DataTypes.STRING,
-    timestamp: DataTypes.DATE,
+    content: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    timestamp: {
+        type: DataTypes.DATE,
+        allowNull: false
+    }
 },
 {
     sequelize,
