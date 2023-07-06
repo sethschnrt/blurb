@@ -28,43 +28,22 @@ router.get('/', async (req, res) => {
           lastName: req.session.lastName,
           userId: req.session.user_id });
   } catch (err) {
-      res.status(500).json(err);
-     
+    res.status(500).json(err);
+  }}
+);
+
+const redirectToDashboard = (req, res, next) => {
+  if (req.session.logged_in) {
+    res.redirect('/');
+  } else {
+    next();
   }
-});
+};
 
-router.get('/post', withAuth, (req, res) => {
-  Post.findAll({
-    where: {
-      userId: req.session.userId,
-    },
-    attributes: ['id', 'title', 'content', 'created_at'],
-    order: [['created_at', 'DESC']],
-    include: [
-      {
-        model: User,
-        attributes: ['first_name', 'last_name'],
-      },
-    ],
-  })
-    .then((dbPostData) => {
-      const posts = dbPostData.map((post) => post.get({ plain: true }));
-      res.render('post', { posts, logged_in: true, first_name: req.session.first_name, last_name: req.session.last_name});       
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).json(err);
-  });
-});
-
-router.get('/login', async (req, res) => {
-  try{
+router.get('/login', redirectToDashboard, async (req, res) => {
   res.render('login');
-  } catch (err){
-    res.status(500).json(err)
-    
-  }
 });
+
 
 router.get('/signup', async (req, res) => {
   try{
