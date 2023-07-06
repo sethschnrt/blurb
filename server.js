@@ -4,7 +4,7 @@ const session = require('express-session');
 const expressHandlebars = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-
+require('dotenv').config();
 const sequelize = require('./config/connection');
 
 //sequelize store using express-session

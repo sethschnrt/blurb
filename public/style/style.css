@@ -19,6 +19,29 @@ footer {
     animation: tilt 1.5s ease-in-out infinite;
 }
 
+
+    .container {
+        height: 90vh;
+        width: 200%; /* Adjust the width as needed */
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+      }
+  
+
+  .card {
+    max-width: 600px;
+  }
+  
+  #post-content {
+    height: 300px; /* Adjust the height as needed */
+    resize: vertical; /* Allow vertical resizing */
+  }
+
+  .btn {
+    margin: 0 0.5rem;
+  }
+
 @keyframes tilt {
     0% {
         transform: rotate(0);
