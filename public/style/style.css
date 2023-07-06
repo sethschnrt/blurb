@@ -2,8 +2,13 @@
     margin-right: 5px;
 }
 
+
 nav {
     max-height: 100px;
+}
+
+footer {
+    display: none;
 }
 
 #blurblogo {
@@ -11,7 +16,7 @@ nav {
 }
 
 #blurblogo:hover {
-    animation: tilt 1.5s ease-in-out;
+    animation: tilt 1.5s ease-in-out infinite;
 }
 
 @keyframes tilt {
@@ -19,12 +24,16 @@ nav {
         transform: rotate(0);
     }
 
-    50% {
+    33% {
         transform: rotate(20deg);
     }
 
-    100% {
+    66% {
         transform: rotate(-20deg);
+    }
+
+    100% {
+        transform: rotate(0);
     }
 }
 
@@ -47,4 +56,13 @@ nav {
     main {
         padding-bottom: 60px;
     }
+
+    footer {
+        display: inline;
+    }
+
+    .blurbBar {
+        display: none;
+    }
+
 }
