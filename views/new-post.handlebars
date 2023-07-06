@@ -1,22 +1,30 @@
-<div class="card">
+<div class="container mt-5 d-flex justify-content-center align-items-start">
+  <div class="card">
     <h2 class="card-header">Add New Post</h2>
 
     <form class="card-body" id="newpost-form">
-
-      <div class="mb-6">
+      <div class="mb-4">
         <label class="form-label">Title:</label>
-        <input type="text" class="form-input" name="post-title"/>
+        <input type="text" class="form-control" name="post-title" />
       </div>
 
-      <div class="mb-6">
+      <div class="mb-4">
         <label class="form-label">Content:</label>
-        <textarea class="form-textarea form-input" name="post-content"></textarea>
+        <div id="post-content" class="form-control form-control-lg"></div>
       </div>
 
-      <div class="mb-6">
+      <div class="mb-4">
+        <label class="form-label">Search GIFs:</label>
+        <input type="text" class="form-control" id="gif-search" />
+        <button id="gif-search-btn" class="btn btn-primary ms-2">Search</button>
+      </div>
+      <div id="gif-results"></div>
+      <input type="hidden" id="selected-gif" name="gif-url" />
+
+      <div class="mb-4">
         <button type="submit" class="btn btn-primary">Create</button>
       </div>
-
     </form>
+  </div>
 </div>
 <script src="/js/newpost.js"></script>
