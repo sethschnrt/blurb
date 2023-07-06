@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Post } = require('../models');
 const sequelize = require('../config/connection');
+const withAuth = require('../utils/auth');
 
 // Get all posts ('/')
 router.get('/', async (req, res) => {
@@ -15,19 +16,11 @@ router.get('/', async (req, res) => {
               },
           ],
           order: [['created_at', 'DESC']],
-      });
-
-      // Log posts after retrieval
-      console.log("Posts after retrieval:", dbPostData);
-      
+      })
       // Serialize data retrieved
       const posts = dbPostData.map((post) => post.get({ plain: true }));
-      console.log("Posts after serialization:", posts);
-      
-      // Log session object
-      console.log("Session object:", req.session);
-
-      // Respond with template to render along with data retrieved
+      console.log(posts)
+      // Respond with template to render along with date retrieved
       res.render('home', 
           { posts, 
           loggedIn: req.session.logged_in,
@@ -35,27 +28,53 @@ router.get('/', async (req, res) => {
           lastName: req.session.lastName,
           userId: req.session.user_id });
   } catch (err) {
-      console.error("Error during the route:", err);
       res.status(500).json(err);
+     
   }
+});
+
+router.get('/post', withAuth, (req, res) => {
+  Post.findAll({
+    where: {
+      userId: req.session.userId,
+    },
+    attributes: ['id', 'title', 'content', 'created_at'],
+    order: [['created_at', 'DESC']],
+    include: [
+      {
+        model: User,
+        attributes: ['first_name', 'last_name'],
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      res.render('post', { posts, logged_in: true, first_name: req.session.first_name, last_name: req.session.last_name});       
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+  });
 });
 
 router.get('/login', async (req, res) => {
   try{
-    res.render('login');
+  res.render('login');
   } catch (err){
-    console.error("Error during the login route:", err);
     res.status(500).json(err)
+    
   }
 });
 
 router.get('/signup', async (req, res) => {
   try{
-    res.render('signup');
+  res.render('signup');
   } catch (err){
-    console.error("Error during the signup route:", err);
     res.status(500).json(err)
+   
   }
 });
+
+
 
 module.exports = router;
