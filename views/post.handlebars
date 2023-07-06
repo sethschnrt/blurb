@@ -1,22 +1,17 @@
 <section>
   <div class="col align-items-center">
-
-
     <container>{{#each posts}}
       <a>
         <h4>{{user.first_name}}{{user.last_name}}</h4>
       </a>
       <a>
         <h5>{{this.title}}</h5>
-        <h6>{{this.content}}</h6>
+        <div class="post-content">{{{this.content}}}</div>
       </a>
-      {{/each}}
+    {{/each}}
     </container>
-
   </div>
   <br />
-
-
 </section>
 
 <button type="submit" class="btn"><a href="/new-post"><i class="bi bi-plus-circle-dotted"></i>POST A BLURB!</a></button>
