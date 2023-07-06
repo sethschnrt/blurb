@@ -22,7 +22,7 @@ footer {
 
     .container {
         height: 90vh;
-        width: 200%; /* Adjust the width as needed */
+        width: 100%; /* Adjust the width as needed */
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -31,6 +31,7 @@ footer {
 
   .card {
     max-width: 600px;
+    margin: 20px auto; 
   }
   
   #post-content {
@@ -41,6 +42,8 @@ footer {
   .btn {
     margin: 0 0.5rem;
   }
+
+
 
 @keyframes tilt {
     0% {
