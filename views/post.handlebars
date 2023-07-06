@@ -3,24 +3,14 @@
     <div class="row align-items-center">
       <h2>Hello, {{username}}!</h2>
       <img src="{{user.profilePicture}}" class="rounded-circle" alt="Profile picture" style="width: 60px; height: 60px;">
-      <p>Please click on the post title to edit it!</p>
+      
     </div>
     <br />
-    {{#each posts as |post|}}
-      <input type="hidden" name="post-id" value="{{post.id}}" />
-      <div class="card">
-        <div class="card-header">
-          <h4><a class="link" href="/dashboard/edit/{{id}}">{{title}}</a></h4>
-        </div>
-        <button class="btn btn-danger" id="del-post-btn"><i
-            class="bi bi-trash"
-          ></i>Delete Post</button>
-      </div>
-    {{/each}}
+    
 
   </section>
 {{/if}}
-<button type="submit" class="btn"><a href="/dashboard/new"><i
+<button type="submit" class="btn"><a href="/post/new-post"><i
       class="bi bi-plus-circle-dotted"
     ></i>Add New Post</a></button>
 
