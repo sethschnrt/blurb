@@ -82,7 +82,7 @@ router.get('/signup', async (req, res) => {
   }
 });
 
-router.get('/post/new-post', withAuth, (req, res) => {
+router.get('/new-post', withAuth, (req, res) => {
   res.render('new-post', { first_name: req.session.first_name, last_name: req.session.last_name});
 });
 
