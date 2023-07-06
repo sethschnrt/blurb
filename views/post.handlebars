@@ -1,17 +1,24 @@
-{{#if posts.length}}
-  <section>
-    <div class="row align-items-center">
-      <h2>Hello, {{post.user.first_name}}{{post.user.last_name}}!</h2>
-      
-      
-    </div>
-    <br />
-    
+<section>
+  <div class="col align-items-center">
 
-  </section>
-{{/if}}
-<button type="submit" class="btn"><a href="/new-post"><i
-      class="bi bi-plus-circle-dotted"
-    ></i>POST A BLURB!</a></button>
+
+    <container>{{#each posts}}
+      <a>
+        <h4>{{user.first_name}}{{user.last_name}}</h4>
+      </a>
+      <a>
+        <h5>{{this.title}}</h5>
+        <h6>{{this.content}}</h6>
+      </a>
+      {{/each}}
+    </container>
+
+  </div>
+  <br />
+
+
+</section>
+
+<button type="submit" class="btn"><a href="/new-post"><i class="bi bi-plus-circle-dotted"></i>POST A BLURB!</a></button>
 
 <script src="/js/newpost.js"></script>
