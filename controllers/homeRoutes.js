@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
           loggedIn: req.session.logged_in,
           firstName: req.session.firstName,
           lastName: req.session.lastName,
-          userId: req.session.user_id });
+          userId: req.session.userId });
   } catch (err) {
     res.status(500).json(err);
   }}
@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
 router.get('/post', withAuth, (req, res) => {
   Post.findAll({
     where: {
-      userId: req.session.user_id,
+      userId: req.session.userId,
     },
     attributes: ['id', 'title', 'content', 'created_at'],
     order: [['created_at', 'DESC']],

@@ -31,15 +31,7 @@ User.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    profilePicture: {
-      type: DataTypes.STRING,
-      allowNull: true,  
-    },
-    biography: {
-      type: DataTypes.TEXT,
-      allowNull: true,  
-    },
+    }
   },
   {
     hooks: {
