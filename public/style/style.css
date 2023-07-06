@@ -2,12 +2,47 @@
     margin-right: 5px;
 }
 
+
 nav {
     max-height: 100px;
 }
 
+footer {
+    display: none;
+}
+
 #blurblogo {
     max-height: 50px;
+}
+
+#blurblogo:hover {
+    animation: tilt 1.5s ease-in-out infinite;
+}
+
+@keyframes tilt {
+    0% {
+        transform: rotate(0);
+    }
+
+    33% {
+        transform: rotate(20deg);
+    }
+
+    66% {
+        transform: rotate(-20deg);
+    }
+
+    100% {
+        transform: rotate(0);
+    }
+}
+
+.profile-picture {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #000;
+    overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -15,10 +50,19 @@ nav {
         position: fixed;
         bottom: 0;
         width: 100%;
-        }
-    
+    }
+
 
     main {
         padding-bottom: 60px;
     }
+
+    footer {
+        display: inline;
+    }
+
+    .blurbBar {
+        display: none;
+    }
+
 }
