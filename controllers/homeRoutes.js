@@ -32,6 +32,30 @@ router.get('/', async (req, res) => {
   }}
 );
 
+router.get('/', withAuth, (req, res) => {
+  Post.findAll({
+    where: {
+      userId: req.session.user_id,
+    },
+    attributes: ['id', 'title', 'content', 'created_at'],
+    order: [['created_at', 'DESC']],
+    include: [
+      {
+        model: User,
+        attributes: ['first_name', 'last_name'],
+      },
+    ],
+  })
+    .then((dbPostData) => {
+      const posts = dbPostData.map((post) => post.get({ plain: true }));
+      res.render('post', { posts, logged_in: true, first_name: req.session.first_name, last_name: req.session.last_name});       
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+  });
+});
+
 const redirectToDashboard = (req, res, next) => {
   if (req.session.logged_in) {
     res.redirect('/');
@@ -40,8 +64,12 @@ const redirectToDashboard = (req, res, next) => {
   }
 };
 
-router.get('/login', redirectToDashboard, async (req, res) => {
+router.get('/login', async (req, res) => {
+  try{
   res.render('login');
+  } catch (err){
+    res.status(500).json(err)
+  }
 });
 
 
