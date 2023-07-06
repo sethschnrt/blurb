@@ -10,13 +10,39 @@ nav {
     max-height: 50px;
 }
 
+#blurblogo:hover {
+    animation: tilt 1.5s ease-in-out;
+}
+
+@keyframes tilt {
+    0% {
+        transform: rotate(0);
+    }
+
+    50% {
+        transform: rotate(20deg);
+    }
+
+    100% {
+        transform: rotate(-20deg);
+    }
+}
+
+.profile-picture {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #000;
+    overflow: hidden;
+}
+
 @media (max-width: 768px) {
     nav {
         position: fixed;
         bottom: 0;
         width: 100%;
-        }
-    
+    }
+
 
     main {
         padding-bottom: 60px;
