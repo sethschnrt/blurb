@@ -33,6 +33,10 @@ If you have any questions about the repo, open an issue or contact us directly a
 
 https://blurb-44f4260f090e.herokuapp.com
 
+## Screenshot of app
+
+![image](https://github.com/sethschnrt/blurb/assets/127680441/3e1caf43-cdf1-4ab2-b7fb-86e433e1b9a6)
+
 
 
 
